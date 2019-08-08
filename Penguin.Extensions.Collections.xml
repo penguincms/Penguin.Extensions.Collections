@@ -1,0 +1,173 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Penguin.Extensions.Collections</name>
+    </assembly>
+    <members>
+        <member name="M:Penguin.Extensions.Collections.ConcurrentDictionaryExtensions.AddOrUpdate``2(System.Collections.Concurrent.ConcurrentDictionary{``0,``1},``0,``1)">
+            <summary>
+            Adds a new item to the concurrent dictionary or updates an existing item with a matching key
+            </summary>
+            <typeparam name="TKey">The type of the key</typeparam>
+            <typeparam name="TValue">The type of the value</typeparam>
+            <param name="dict">The source dictionary</param>
+            <param name="key">The key to search for</param>
+            <param name="value">The value to set the key to, or the new value to add</param>
+            <returns>Whether or not the operation was successfull</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.DictionaryExtensions.ToFormattedString``2(System.Collections.Generic.Dictionary{``0,``1},System.Char,System.Char)">
+            <summary>
+            Returns the dictionary in a formatted single string for later parsing, or rendering, or storage
+            </summary>
+            <typeparam name="TKey">Any type that can be represented as a string</typeparam>
+            <typeparam name="TValue">Any type that can be represented as a string</typeparam>
+            <param name="dict">The source dictionary</param>
+            <param name="seperator">The character to insert between the key and value</param>
+            <param name="terminator">The character to insert after each key value pair</param>
+            <returns>A string representing the contents of the dictionary</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.AnyNotNull``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Checks if an IEnumerable is Not null and contains objects
+            </summary>
+            <typeparam name="T">Any type</typeparam>
+            <param name="target">The IEnumerable to check</param>
+            <returns>True if the IEnumerable is not null and contains any obejcts</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.AnyNotNull``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Checks if an IEnumerable is Not null and contains objects
+            </summary>
+            <typeparam name="T">Any type</typeparam>
+            <param name="target">The IEnumerable to check</param>
+            <param name="predicate">The predicate to check for</param>
+            <returns>True if the IEnumerable is not null and contains any obejcts matching the predicate</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
+            <summary>
+            Runs an action once for every object in the IEnumerable
+            </summary>
+            <typeparam name="T">Any type</typeparam>
+            <param name="oldQuery">The IEnumerable to check</param>
+            <param name="toRun">The Action to run</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.GetCommonType``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Returns the shared base type of all objects in the list
+            </summary>
+            <typeparam name="T">The list type</typeparam>
+            <param name="target">The list to check</param>
+            <returns>A type that should be assignable from every object in the list</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.ToList``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
+            <summary>
+            Combines ToList and Where into a single function
+            </summary>
+            <typeparam name="T">Any Type</typeparam>
+            <param name="oldQuery">The IEnumerable target</param>
+            <param name="filter">The predicate to pass to Where</param>
+            <returns>The filtered list</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.ToQueue``1(System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            Converts an IEnumerable to a Queue
+            </summary>
+            <typeparam name="T">Any type</typeparam>
+            <param name="list">The target list</param>
+            <returns>A Queue in the order of the list</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.OfType``1(System.Collections.IEnumerable)">
+            <summary>
+            Returns an IEnumerable from the source list containing only the specified type
+            </summary>
+            <typeparam name="T">Any class type</typeparam>
+            <param name="source">The source list</param>
+            <returns>An IEnumerable from the source list containing only the specified type</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.OfType``2(System.Collections.Generic.IEnumerable{``1})">
+            <summary>
+            Returns an IEnumerable from the source list containing only the specified type
+            </summary>
+            <typeparam name="X">Any type that inherits from the source type</typeparam>
+            <typeparam name="Y">The source list Type</typeparam>
+            <param name="source">The source list</param>
+            <returns>An IEnumerable from the source list containing only the specified type</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.OfType``1(System.Collections.Generic.IEnumerable{``0},System.Type)">
+            <summary>
+            Returns an IEnumerable from the source list containing only the specified type
+            </summary>
+            <typeparam name="T">The source list Type</typeparam>
+            <param name="source">The source list</param>
+            <param name="t">The type of objects to return from the source</param>
+            <returns>An IEnumerable from the source list containing only the specified type</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.Dequeue``1(System.Collections.Generic.List{``0})">
+            <summary>
+            Removes and returns the first item from a list
+            </summary>
+            <typeparam name="T">Any type</typeparam>
+            <param name="list">The source list</param>
+            <returns>The first item</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveBack``1(System.Collections.Generic.List{``0},System.Predicate{``0},System.Boolean)">
+            <summary>
+            Moves and item in a list one space towards the front
+            </summary>
+            <typeparam name="T">Any Type</typeparam>
+            <param name="list">The target list</param>
+            <param name="itemSelector">The predicate to use to find the item</param>
+            <param name="isFirstToEnd">A bool representing whether or not the first item should wrap to the end of the list</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveForward``1(System.Collections.Generic.List{``0},System.Predicate{``0},System.Boolean)">
+            <summary>
+            Moves and item in a list one space towards the end
+            </summary>
+            <typeparam name="T">Any Type</typeparam>
+            <param name="list">The target list</param>
+            <param name="itemSelector">The predicate to use to find the item</param>
+            <param name="isLastToBeginning">A bool indicating whether or not the last item should move to the front</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.RecursiveProcess``1(System.Collections.Generic.List{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            Recursively processes a function on a list
+            </summary>
+            <typeparam name="T">Any type</typeparam>
+            <param name="queue">The top most list on the tree</param>
+            <param name="processingFunc">A function accepting a child and returning the next list of nodes to add to the processing queue</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.Split``1(System.Collections.Generic.List{``0},System.Int32)">
+            <summary>
+            Splits a list into evenly sized chunks
+            </summary>
+            <typeparam name="T">Any type</typeparam>
+            <param name="input">The source list</param>
+            <param name="size">The size of the chunked lists</param>
+            <returns>An IEnumerable used to access the collection of new child lists</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.Random``1(System.Collections.Generic.ICollection{``0})">
+            <summary>
+            Chooses a random item from the source
+            </summary>
+            <typeparam name="T">Any item type</typeparam>
+            <param name="source">The source collection to pick from</param>
+            <returns>Any random item from the list</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.QueueExtensions.Enqueue``1(System.Collections.Generic.Queue{``0},System.Collections.Generic.IEnumerable{``0})">
+            <summary>
+            An AddRange equivalent for a Queue
+            </summary>
+            <typeparam name="T">Any type</typeparam>
+            <param name="queue">The target Queue</param>
+            <param name="toAdd">The items to add</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.QueueExtensions.RecursiveProcess``1(System.Collections.Generic.Queue{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}})">
+            <summary>
+            Recursively processes a function on a Queue
+            </summary>
+            <typeparam name="T">Any type</typeparam>
+            <param name="queue">The top most queue on the tree</param>
+            <param name="processingFunc">A function accepting a child and returning the next list of nodes to add to the processing queue</param>
+        </member>
+    </members>
+</doc>
