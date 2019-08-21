@@ -117,7 +117,7 @@ namespace Penguin.Extensions.Collections
         /// <typeparam name="T">Any class type</typeparam>
         /// <param name="source">The source list</param>
         /// <returns>An IEnumerable from the source list containing only the specified type</returns>
-        public static IEnumerable<T> OfType<T>(IEnumerable source) where T : class
+        public static IEnumerable<T> OfType<T>(this IEnumerable source) where T : class
         {
             foreach(object o in source)
             {
@@ -135,7 +135,7 @@ namespace Penguin.Extensions.Collections
         /// <typeparam name="Y">The source list Type</typeparam>
         /// <param name="source">The source list</param>
         /// <returns>An IEnumerable from the source list containing only the specified type</returns>
-        public static IEnumerable<X> OfType<X, Y>(IEnumerable<Y> source) where X : Y
+        public static IEnumerable<X> OfType<X, Y>(this IEnumerable<Y> source) where X : Y
         {
             return source.Where(p => p is X).Cast<X>();
         }
@@ -147,7 +147,7 @@ namespace Penguin.Extensions.Collections
         /// <param name="source">The source list</param>
         /// <param name="t">The type of objects to return from the source</param>
         /// <returns>An IEnumerable from the source list containing only the specified type</returns>
-        public static IEnumerable<T> OfType<T>(IEnumerable<T> source, Type t)
+        public static IEnumerable<T> OfType<T>(this IEnumerable<T> source, Type t)
         {
             return source.Where(p => p.GetType() == t);
         }
@@ -158,7 +158,7 @@ namespace Penguin.Extensions.Collections
         /// <typeparam name="T">Any class type</typeparam>
         /// <param name="source">The source list</param>
         /// <returns>An IEnumerable from the source list containing everything but the specified type</returns>
-        public static IEnumerable NotOfType<T>(IEnumerable source) where T : class
+        public static IEnumerable NotOfType<T>(this IEnumerable source) where T : class
         {
             foreach (object o in source)
             {
@@ -176,7 +176,7 @@ namespace Penguin.Extensions.Collections
         /// <typeparam name="Y">The source list Type</typeparam>
         /// <param name="source">The source list</param>
         /// <returns>An IEnumerable from the source list containing everything but the specified type</returns>
-        public static IEnumerable<Y> NotOfType<X, Y>(IEnumerable<Y> source) where X : Y
+        public static IEnumerable<Y> NotOfType<X, Y>(this IEnumerable<Y> source) where X : Y
         {
             return source.Where(p => !(p is X));
         }
@@ -188,7 +188,7 @@ namespace Penguin.Extensions.Collections
         /// <param name="source">The source list</param>
         /// <param name="t">The type of objects to return from the source</param>
         /// <returns>An IEnumerable from the source list containing everything but the specified type</returns>
-        public static IEnumerable<T> NotOfType<T>(IEnumerable<T> source, Type t)
+        public static IEnumerable<T> NotOfType<T>(this IEnumerable<T> source, Type t)
         {
             return source.Where(p => p.GetType() != t);
         }
