@@ -110,24 +110,6 @@ namespace Penguin.Extensions.Collections
             return queue;
         }
 
-
-        /// <summary>
-        /// Returns an IEnumerable from the source list containing only the specified type
-        /// </summary>
-        /// <typeparam name="T">Any class type</typeparam>
-        /// <param name="source">The source list</param>
-        /// <returns>An IEnumerable from the source list containing only the specified type</returns>
-        public static IEnumerable<T> OfType<T>(this IEnumerable source) where T : class
-        {
-            foreach(object o in source)
-            {
-                if(o is T)
-                {
-                    yield return o as T;
-                }
-            }
-        }
-
         /// <summary>
         /// Returns an IEnumerable from the source list containing only the specified type
         /// </summary>

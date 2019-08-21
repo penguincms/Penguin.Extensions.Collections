@@ -76,14 +76,6 @@
             <param name="list">The target list</param>
             <returns>A Queue in the order of the list</returns>
         </member>
-        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.OfType``1(System.Collections.IEnumerable)">
-            <summary>
-            Returns an IEnumerable from the source list containing only the specified type
-            </summary>
-            <typeparam name="T">Any class type</typeparam>
-            <param name="source">The source list</param>
-            <returns>An IEnumerable from the source list containing only the specified type</returns>
-        </member>
         <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.OfType``2(System.Collections.Generic.IEnumerable{``1})">
             <summary>
             Returns an IEnumerable from the source list containing only the specified type
