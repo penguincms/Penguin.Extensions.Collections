@@ -102,6 +102,32 @@
             <param name="t">The type of objects to return from the source</param>
             <returns>An IEnumerable from the source list containing only the specified type</returns>
         </member>
+        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.NotOfType``1(System.Collections.IEnumerable)">
+            <summary>
+            Returns an IEnumerable from the source list containing everything but the specified type
+            </summary>
+            <typeparam name="T">Any class type</typeparam>
+            <param name="source">The source list</param>
+            <returns>An IEnumerable from the source list containing everything but the specified type</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.NotOfType``2(System.Collections.Generic.IEnumerable{``1})">
+            <summary>
+            Returns an IEnumerable from the source list containing everything but the specified type
+            </summary>
+            <typeparam name="X">Any type that inherits from the source type</typeparam>
+            <typeparam name="Y">The source list Type</typeparam>
+            <param name="source">The source list</param>
+            <returns>An IEnumerable from the source list containing everything but the specified type</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.NotOfType``1(System.Collections.Generic.IEnumerable{``0},System.Type)">
+            <summary>
+            Returns an IEnumerable from the source list containing everything but the specified type
+            </summary>
+            <typeparam name="T">The source list Type</typeparam>
+            <param name="source">The source list</param>
+            <param name="t">The type of objects to return from the source</param>
+            <returns>An IEnumerable from the source list containing everything but the specified type</returns>
+        </member>
         <member name="M:Penguin.Extensions.Collections.ListExtensions.Dequeue``1(System.Collections.Generic.List{``0})">
             <summary>
             Removes and returns the first item from a list

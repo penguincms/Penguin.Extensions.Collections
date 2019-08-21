@@ -152,6 +152,47 @@ namespace Penguin.Extensions.Collections
             return source.Where(p => p.GetType() == t);
         }
 
+        /// <summary>
+        /// Returns an IEnumerable from the source list containing everything but the specified type
+        /// </summary>
+        /// <typeparam name="T">Any class type</typeparam>
+        /// <param name="source">The source list</param>
+        /// <returns>An IEnumerable from the source list containing everything but the specified type</returns>
+        public static IEnumerable NotOfType<T>(IEnumerable source) where T : class
+        {
+            foreach (object o in source)
+            {
+                if (!(o is T))
+                {
+                    yield return o;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Returns an IEnumerable from the source list containing everything but the specified type
+        /// </summary>
+        /// <typeparam name="X">Any type that inherits from the source type</typeparam>
+        /// <typeparam name="Y">The source list Type</typeparam>
+        /// <param name="source">The source list</param>
+        /// <returns>An IEnumerable from the source list containing everything but the specified type</returns>
+        public static IEnumerable<Y> NotOfType<X, Y>(IEnumerable<Y> source) where X : Y
+        {
+            return source.Where(p => !(p is X));
+        }
+
+        /// <summary>
+        /// Returns an IEnumerable from the source list containing everything but the specified type
+        /// </summary>
+        /// <typeparam name="T">The source list Type</typeparam>
+        /// <param name="source">The source list</param>
+        /// <param name="t">The type of objects to return from the source</param>
+        /// <returns>An IEnumerable from the source list containing everything but the specified type</returns>
+        public static IEnumerable<T> NotOfType<T>(IEnumerable<T> source, Type t)
+        {
+            return source.Where(p => p.GetType() != t);
+        }
+
         #endregion Methods
     }
 }
