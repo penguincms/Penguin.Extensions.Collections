@@ -21,7 +21,7 @@ namespace Penguin.Extensions.Collections
         {
             StringBuilder sb = new StringBuilder();
 
-            foreach(KeyValuePair<TKey, TValue> kvp in dict)
+            foreach (KeyValuePair<TKey, TValue> kvp in dict)
             {
                 sb.Append(kvp.Key);
                 sb.Append(seperator);
@@ -30,6 +30,32 @@ namespace Penguin.Extensions.Collections
             }
 
             return sb.ToString();
+        }
+
+        /// <summary>
+        /// Adds a value to the dictionary with the given key if it does not exist, or updates the given key if it does
+        /// </summary>
+        /// <typeparam name="TKey">The key type</typeparam>
+        /// <typeparam name="TValue">The value type</typeparam>
+        /// <param name="dict">The dictionary to alter</param>
+        /// <param name="key">The key to add or update</param>
+        /// <param name="value">The value to add or update</param>
+        /// <returns>true if the value was added, false if it was updated</returns>
+        public static bool AddOrUpdate<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key, TValue value)
+        {
+
+
+            if (!dict.ContainsKey(key))
+            {
+                dict.Add(key, value);
+                return true;
+            }
+            else
+            {
+                dict[key] = value;
+                return false;
+            }
+
         }
     }
 }
