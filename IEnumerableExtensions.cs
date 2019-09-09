@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Penguin.Reflection.Extensions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
@@ -120,6 +121,35 @@ namespace Penguin.Extensions.Collections
         public static IEnumerable<X> OfType<X, Y>(this IEnumerable<Y> source) where X : Y
         {
             return source.Where(p => p is X).Cast<X>();
+        }
+
+        /// <summary>
+        /// Converts a non-generic IEnumerable to a typed list
+        /// </summary>
+        /// <param name="source">The non-generic IEnumerable source</param>
+        /// <returns>A typed list of the IEnumerable source type</returns>
+        public static IList ToGenericList(this IEnumerable source)
+        {
+            if(source is null)
+            {
+                return null;
+            }
+
+            Type collectionType = source.GetType().GetCollectionType();
+
+            if(collectionType is null)
+            {
+                collectionType = typeof(object);
+            }
+
+            IList toReturn = Activator.CreateInstance(typeof(List<>).MakeGenericType(collectionType)) as IList;
+
+            foreach(object o in source)
+            {
+                toReturn.Add(o);
+            }
+
+            return toReturn;
         }
 
         /// <summary>

@@ -7,7 +7,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	<PackageProjectUrl>http://www.penguinms.com/Nuget</PackageProjectUrl>
 	<PackageIconUrl>http://www.penguinms.com/client/images/pg.png</PackageIconUrl>
-    <Version>1.2.0</Version>
+    <Version>1.2.1</Version>
 	<IncludeSymbols>true</IncludeSymbols>
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	<Description>A few Collection extension methods. Notibly a method for "Not null and Any", a method for recursively processing tree items, and a few convertion methods between collection types</Description>
@@ -28,6 +28,10 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Penguin.Reflection.Extensions" Version="2.0.14" />
   </ItemGroup>
 
 </Project>

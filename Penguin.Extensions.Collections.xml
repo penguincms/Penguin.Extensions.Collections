@@ -96,6 +96,13 @@
             <param name="source">The source list</param>
             <returns>An IEnumerable from the source list containing only the specified type</returns>
         </member>
+        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.ToGenericList(System.Collections.IEnumerable)">
+            <summary>
+            Converts a non-generic IEnumerable to a typed list
+            </summary>
+            <param name="source">The non-generic IEnumerable source</param>
+            <returns>A typed list of the IEnumerable source type</returns>
+        </member>
         <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.OfType``1(System.Collections.Generic.IEnumerable{``0},System.Type)">
             <summary>
             Returns an IEnumerable from the source list containing only the specified type
