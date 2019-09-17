@@ -1,10 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Text;
 
 namespace Penguin.Extensions.Collections
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
     public static class DictionaryExtensions
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
@@ -19,6 +20,8 @@ namespace Penguin.Extensions.Collections
         /// <returns>A string representing the contents of the dictionary</returns>
         public static string ToFormattedString<TKey, TValue>(this Dictionary<TKey, TValue> dict, char seperator = '=', char terminator = ';')
         {
+            Contract.Requires(dict != null);
+
             StringBuilder sb = new StringBuilder();
 
             foreach (KeyValuePair<TKey, TValue> kvp in dict)
@@ -41,9 +44,10 @@ namespace Penguin.Extensions.Collections
         /// <param name="key">The key to add or update</param>
         /// <param name="value">The value to add or update</param>
         /// <returns>true if the value was added, false if it was updated</returns>
-        public static bool AddOrUpdate<TKey, TValue>(this Dictionary<TKey, TValue> dict, TKey key, TValue value)
+        public static bool AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, TValue value)
         {
-
+            Contract.Requires(dict != null);
+            Contract.Requires(key != null);
 
             if (!dict.ContainsKey(key))
             {
@@ -55,7 +59,6 @@ namespace Penguin.Extensions.Collections
                 dict[key] = value;
                 return false;
             }
-
         }
     }
 }

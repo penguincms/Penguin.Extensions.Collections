@@ -7,7 +7,7 @@
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
 	<PackageProjectUrl>https://github.com/penguincms/Penguin.Extensions.Collections</PackageProjectUrl>
 	<PackageIconUrl>http://www.penguinms.com/client/images/pg.png</PackageIconUrl>
-    <Version>1.2.1</Version>
+    <Version>2.0.0</Version>
 	<IncludeSymbols>true</IncludeSymbols>
 	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
 	<Description>A few Collection extension methods. Notibly a method for "Not null and Any", a method for recursively processing tree items, and a few convertion methods between collection types</Description>
@@ -31,7 +31,11 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Penguin.Reflection.Extensions" Version="2.0.14" />
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Penguin.Reflection.Extensions" Version="3.0.0" />
   </ItemGroup>
 
 </Project>

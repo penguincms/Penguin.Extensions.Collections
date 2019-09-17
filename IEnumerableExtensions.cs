@@ -2,16 +2,16 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 
 namespace Penguin.Extensions.Collections
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
     public static class IEnumerableExtensions
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
-        #region Methods
-
         /// <summary>
         /// Checks if an IEnumerable is Not null and contains objects
         /// </summary>
@@ -43,6 +43,9 @@ namespace Penguin.Extensions.Collections
         /// <param name="toRun">The Action to run</param>
         public static void ForEach<T>(this IEnumerable<T> oldQuery, Action<T> toRun)
         {
+            Contract.Requires(oldQuery != null);
+            Contract.Requires(toRun != null);
+
             foreach (T item in oldQuery)
             {
                 toRun.Invoke(item);
@@ -57,8 +60,6 @@ namespace Penguin.Extensions.Collections
         /// <returns>A type that should be assignable from every object in the list</returns>
         public static Type GetCommonType<T>(this IEnumerable<T> target)
         {
-            Type commonType = null;
-
             if (target is null)
             {
                 return typeof(T);
@@ -66,7 +67,7 @@ namespace Penguin.Extensions.Collections
 
             //Start the type recursion based on the first list object. This will most likely be the return type
             //Since the list will most likely contain a single type
-            commonType = target.First().GetType();
+            Type commonType = target.First().GetType();
 
             //Now we look for a base Type to edit
             foreach (object thisEntity in target)
@@ -101,6 +102,8 @@ namespace Penguin.Extensions.Collections
         /// <returns>A Queue in the order of the list</returns>
         public static Queue<T> ToQueue<T>(this IEnumerable<T> list)
         {
+            Contract.Requires(list != null);
+
             Queue<T> queue = new Queue<T>();
 
             foreach (T item in list)
@@ -112,39 +115,27 @@ namespace Penguin.Extensions.Collections
         }
 
         /// <summary>
-        /// Returns an IEnumerable from the source list containing only the specified type
-        /// </summary>
-        /// <typeparam name="X">Any type that inherits from the source type</typeparam>
-        /// <typeparam name="Y">The source list Type</typeparam>
-        /// <param name="source">The source list</param>
-        /// <returns>An IEnumerable from the source list containing only the specified type</returns>
-        public static IEnumerable<X> OfType<X, Y>(this IEnumerable<Y> source) where X : Y
-        {
-            return source.Where(p => p is X).Cast<X>();
-        }
-
-        /// <summary>
         /// Converts a non-generic IEnumerable to a typed list
         /// </summary>
         /// <param name="source">The non-generic IEnumerable source</param>
         /// <returns>A typed list of the IEnumerable source type</returns>
         public static IList ToGenericList(this IEnumerable source)
         {
-            if(source is null)
+            if (source is null)
             {
                 return null;
             }
 
             Type collectionType = source.GetType().GetCollectionType();
 
-            if(collectionType is null)
+            if (collectionType is null)
             {
                 collectionType = typeof(object);
             }
 
             IList toReturn = Activator.CreateInstance(typeof(List<>).MakeGenericType(collectionType)) as IList;
 
-            foreach(object o in source)
+            foreach (object o in source)
             {
                 toReturn.Add(o);
             }
@@ -172,6 +163,8 @@ namespace Penguin.Extensions.Collections
         /// <returns>An IEnumerable from the source list containing everything but the specified type</returns>
         public static IEnumerable NotOfType<T>(this IEnumerable source) where T : class
         {
+            Contract.Requires(source != null);
+
             foreach (object o in source)
             {
                 if (!(o is T))
@@ -184,13 +177,15 @@ namespace Penguin.Extensions.Collections
         /// <summary>
         /// Returns an IEnumerable from the source list containing everything but the specified type
         /// </summary>
-        /// <typeparam name="X">Any type that inherits from the source type</typeparam>
-        /// <typeparam name="Y">The source list Type</typeparam>
+        /// <typeparam name="TExclude">Any type that inherits from the source type</typeparam>
+        /// <typeparam name="TSource">The source list Type</typeparam>
         /// <param name="source">The source list</param>
         /// <returns>An IEnumerable from the source list containing everything but the specified type</returns>
-        public static IEnumerable<Y> NotOfType<X, Y>(this IEnumerable<Y> source) where X : Y
+        public static IEnumerable<TSource> NotOfType<TExclude, TSource>(this IEnumerable<TSource> source) where TExclude : TSource
         {
-            return source.Where(p => !(p is X));
+            Contract.Requires(source != null);
+
+            return source.Where(p => !(p is TExclude));
         }
 
         /// <summary>
@@ -204,7 +199,5 @@ namespace Penguin.Extensions.Collections
         {
             return source.Where(p => p.GetType() != t);
         }
-
-        #endregion Methods
     }
 }

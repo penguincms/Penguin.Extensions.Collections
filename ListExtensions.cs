@@ -1,23 +1,26 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.Contracts;
 using System.Linq;
 
 namespace Penguin.Extensions.Collections
 {
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
+
     public static class ListExtensions
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
-        #region Methods
-
         /// <summary>
         /// Removes and returns the first item from a list
         /// </summary>
         /// <typeparam name="T">Any type</typeparam>
         /// <param name="list">The source list</param>
         /// <returns>The first item</returns>
-        public static T Dequeue<T>(this List<T> list)
+        public static T Dequeue<T>(this IList<T> list)
         {
+            Contract.Requires(list != null);
+            Contract.Requires(list.Any());
+
             T item = list.ElementAt(0);
             list.RemoveAt(0);
             return item;
@@ -32,6 +35,8 @@ namespace Penguin.Extensions.Collections
         /// <param name="isFirstToEnd">A bool representing whether or not the first item should wrap to the end of the list</param>
         public static void MoveBack<T>(this List<T> list, Predicate<T> itemSelector, bool isFirstToEnd)
         {
+            Contract.Requires(list != null);
+
             int currentIndex = list.FindIndex(itemSelector);
 
             // Copy the current item
@@ -66,6 +71,8 @@ namespace Penguin.Extensions.Collections
         /// <param name="isLastToBeginning">A bool indicating whether or not the last item should move to the front</param>
         public static void MoveForward<T>(this List<T> list, Predicate<T> itemSelector, bool isLastToBeginning)
         {
+            Contract.Requires(list != null);
+
             int currentIndex = list.FindIndex(itemSelector);
 
             // Copy the current item
@@ -97,9 +104,20 @@ namespace Penguin.Extensions.Collections
         /// <typeparam name="T">Any type</typeparam>
         /// <param name="queue">The top most list on the tree</param>
         /// <param name="processingFunc">A function accepting a child and returning the next list of nodes to add to the processing queue</param>
-        public static void RecursiveProcess<T>(this List<T> queue, Func<T, IEnumerable<T>> processingFunc)
+        public static void RecursiveProcess<T>(this IEnumerable<T> queue, Func<T, IEnumerable<T>> processingFunc)
         {
-            List<T> toProcess = new List<T>();
+            Contract.Requires(queue != null);
+
+            List<T> toProcess;
+
+            if (queue is ICollection<T> collection)
+            {
+                toProcess = new List<T>(collection.Count);
+            }
+            else
+            {
+                toProcess = new List<T>();
+            }
 
             foreach (T item in queue)
             {
@@ -111,18 +129,13 @@ namespace Penguin.Extensions.Collections
             {
                 T item = toProcess.Dequeue();
 
-                if (item != null)
-                {
-                    result = processingFunc.Invoke(item);
+                result = processingFunc.Invoke(item);
 
-                    if (result != null)
-                    {
-                        foreach (T child in result)
-                        {
-                            toProcess.Add(child);
-                        }
-                    }
+                if (result != null)
+                {
+                    toProcess.AddRange(result);
                 }
+
             }
         }
 
@@ -133,15 +146,31 @@ namespace Penguin.Extensions.Collections
         /// <param name="input">The source list</param>
         /// <param name="size">The size of the chunked lists</param>
         /// <returns>An IEnumerable used to access the collection of new child lists</returns>
-        public static IEnumerable<List<T>> Split<T>(this List<T> input, int size)
+        public static IEnumerable<List<T>> Split<T>(this IEnumerable<T> input, int size)
         {
-            for (int i = 0; i < input.Count; i += size)
+            Contract.Requires(input != null);
+            Contract.Requires(size > 0);
+
+            List<T> toReturn = new List<T>(size);
+
+            foreach (T item in input)
             {
-                yield return input.GetRange(i, Math.Min(size, input.Count - i));
+                toReturn.Add(item);
+
+                if (toReturn.Count == size)
+                {
+                    yield return toReturn;
+                    toReturn.Clear();
+                }
+            }
+
+            if (toReturn.Any())
+            {
+                yield return toReturn;
             }
         }
 
-        private static System.Random random { get; set; } = new Random();
+        private static System.Random InternalRandom { get; set; } = new Random();
 
         /// <summary>
         /// Chooses a random item from the source
@@ -151,9 +180,10 @@ namespace Penguin.Extensions.Collections
         /// <returns>Any random item from the list</returns>
         public static T Random<T>(this ICollection<T> source)
         {
-            return source.ElementAt(random.Next(0, source.Count));
-        }
+            Contract.Requires(source != null);
+            Contract.Requires(source.Any());
 
-        #endregion Methods
+            return source.ElementAt(InternalRandom.Next(0, source.Count));
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Concurrent;
+using System.Diagnostics.Contracts;
 
 namespace Penguin.Extensions.Collections
 {
@@ -7,8 +8,6 @@ namespace Penguin.Extensions.Collections
     public static class ConcurrentDictionaryExtensions
 #pragma warning restore CS1591 // Missing XML comment for publicly visible type or member
     {
-        #region Methods
-
         /// <summary>
         /// Adds a new item to the concurrent dictionary or updates an existing item with a matching key
         /// </summary>
@@ -18,8 +17,11 @@ namespace Penguin.Extensions.Collections
         /// <param name="key">The key to search for</param>
         /// <param name="value">The value to set the key to, or the new value to add</param>
         /// <returns>Whether or not the operation was successfull</returns>
-        public static bool AddOrUpdate<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dict, TKey key, TValue value)
+        public static bool TryAddOrUpdate<TKey, TValue>(this ConcurrentDictionary<TKey, TValue> dict, TKey key, TValue value)
         {
+            Contract.Requires(dict != null);
+            Contract.Requires(key != null);
+
             if (dict.ContainsKey(key))
             {
                 dict[key] = value;
@@ -30,7 +32,5 @@ namespace Penguin.Extensions.Collections
                 return dict.TryAdd(key, value);
             }
         }
-
-        #endregion Methods
     }
 }
