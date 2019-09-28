@@ -1,40 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
-
+  <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
   <PropertyGroup>
-    <TargetFramework>netstandard2.0</TargetFramework>
-    <PackageLicenseFile>License.txt</PackageLicenseFile>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
-    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <TargetFrameworks>netstandard2.0</TargetFrameworks>
 	<PackageProjectUrl>https://github.com/penguincms/Penguin.Extensions.Collections</PackageProjectUrl>
-	<PackageIconUrl>http://www.penguinms.com/client/images/pg.png</PackageIconUrl>
-    <Version>2.0.0</Version>
-	<IncludeSymbols>true</IncludeSymbols>
-	<SymbolPackageFormat>snupkg</SymbolPackageFormat>
+    <Version>2.0.1</Version>
 	<Description>A few Collection extension methods. Notibly a method for "Not null and Any", a method for recursively processing tree items, and a few convertion methods between collection types</Description>
   </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
-    <WarningsAsErrors>NU1605, CS1591</WarningsAsErrors>
-    <DocumentationFile>Penguin.Extensions.Collections.xml</DocumentationFile>
-  </PropertyGroup>
-  
-  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
-	<DebugType>full</DebugType>
-    <DocumentationFile>Penguin.Extensions.Collections.xml</DocumentationFile>
-  </PropertyGroup>
 
   <ItemGroup>
-    <None Include="License.txt">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-  </ItemGroup>
-
-  <ItemGroup>
-    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="2.9.4">
-      <PrivateAssets>all</PrivateAssets>
-      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
-    </PackageReference>
     <PackageReference Include="Penguin.Reflection.Extensions" Version="3.0.0" />
   </ItemGroup>
 
