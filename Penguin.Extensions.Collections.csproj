@@ -3,7 +3,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
 	<PackageProjectUrl>https://github.com/penguincms/Penguin.Extensions.Collections</PackageProjectUrl>
-    <Version>2.0.1</Version>
+    <Version>2.0.2</Version>
 	<Description>A few Collection extension methods. Notibly a method for "Not null and Any", a method for recursively processing tree items, and a few convertion methods between collection types</Description>
   </PropertyGroup>
 
