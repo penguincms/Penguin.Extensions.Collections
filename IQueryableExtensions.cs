@@ -26,9 +26,12 @@ namespace Penguin.Extensions.Collections
         /// </summary>
         /// <param name="source">The source IQueryable</param>
         /// <returns>A Typed List</returns>
-        public static IList<object> ToObjectList(this IQueryable source)
+        public static IEnumerable<object> AsIEnumerable(this IQueryable source)
         {
-            return Enumerable.ToList(source.Cast<object>());
+            foreach(object o in source)
+            {
+                yield return o;
+            }
         }
     }
 }

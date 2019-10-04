@@ -137,7 +137,7 @@
             <param name="source">The source IQueryable</param>
             <returns>A Typed List</returns>
         </member>
-        <member name="M:Penguin.Extensions.Collections.IQueryableExtensions.ToObjectList(System.Linq.IQueryable)">
+        <member name="M:Penguin.Extensions.Collections.IQueryableExtensions.AsIEnumerable(System.Linq.IQueryable)">
             <summary>
             Converts an IQueryable to a typed list
             </summary>
