@@ -1,7 +1,7 @@
 <?xml version="1.0"?>
 <doc>
     <assembly>
-        <name>Penguin.Extensions.Collections.Local</name>
+        <name>Penguin.Extensions.Collections</name>
     </assembly>
     <members>
         <member name="M:Penguin.Extensions.Collections.ConcurrentDictionaryExtensions.TryAddOrUpdate``2(System.Collections.Concurrent.ConcurrentDictionary{``0,``1},``0,``1)">
