@@ -7,6 +7,6 @@
     <Description>A few Collection extension methods. Notibly a method for "Not null and Any", a method for recursively processing tree items, and a few convertion methods between collection types</Description>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Penguin.Reflection.Extensions" Version="3.0.4-63707653241" />
+    <PackageReference Include="Penguin.Reflection.Extensions" Version="3.0.4-T9LXGUJ" />
   </ItemGroup>
 </Project>
