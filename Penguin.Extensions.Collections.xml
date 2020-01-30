@@ -45,6 +45,15 @@
             <param name="target">The IEnumerable to check</param>
             <returns>True if the IEnumerable is not null and contains any obejcts</returns>
         </member>
+        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.Join``1(System.Collections.Generic.IEnumerable{``0},System.String)">
+            <summary>
+            Converts a list of objects to a list of strings and then calls Join with the specified delimeter
+            </summary>
+            <typeparam name="T">Any type</typeparam>
+            <param name="target">The IEnumerable to join</param>
+            <param name="delimeter">The string delimeter to join with</param>
+            <returns>True if the IEnumerable is not null and contains any obejcts</returns>
+        </member>
         <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.AnyNotNull``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
             <summary>
             Checks if an IEnumerable is Not null and contains objects
@@ -128,6 +137,21 @@
             <param name="source">The source list</param>
             <param name="t">The type of objects to return from the source</param>
             <returns>An IEnumerable from the source list containing everything but the specified type</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.IQueryableExtensions.ToTypedList``1(System.Linq.IQueryable)">
+            <summary>
+            Converts an IQueryable to a typed list
+            </summary>
+            <typeparam name="T">The type filter to apply</typeparam>
+            <param name="source">The source IQueryable</param>
+            <returns>A Typed List</returns>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.IQueryableExtensions.AsIEnumerable(System.Linq.IQueryable)">
+            <summary>
+            Converts an IQueryable to a typed list
+            </summary>
+            <param name="source">The source IQueryable</param>
+            <returns>A Typed List</returns>
         </member>
         <member name="M:Penguin.Extensions.Collections.ListExtensions.Dequeue``1(System.Collections.Generic.IList{``0})">
             <summary>

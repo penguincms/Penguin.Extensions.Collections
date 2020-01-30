@@ -24,6 +24,24 @@ namespace Penguin.Extensions.Collections
         }
 
         /// <summary>
+        /// Converts a list of objects to a list of strings and then calls Join with the specified delimeter
+        /// </summary>
+        /// <typeparam name="T">Any type</typeparam>
+        /// <param name="target">The IEnumerable to join</param>
+        /// <param name="delimeter">The string delimeter to join with</param>
+        /// <returns>True if the IEnumerable is not null and contains any obejcts</returns>
+        public static string Join<T>(this IEnumerable<T> target, string delimeter = ", ")
+        {
+            if(target is null)
+            {
+                throw new ArgumentNullException(nameof(delimeter));
+            }
+
+
+            return string.Join(delimeter, target.Select(o => $"{o}"));
+        }
+
+        /// <summary>
         /// Checks if an IEnumerable is Not null and contains objects
         /// </summary>
         /// <typeparam name="T">Any type</typeparam>
