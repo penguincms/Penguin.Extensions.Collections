@@ -32,11 +32,10 @@ namespace Penguin.Extensions.Collections
         /// <returns>True if the IEnumerable is not null and contains any obejcts</returns>
         public static string Join<T>(this IEnumerable<T> target, string delimeter = ", ")
         {
-            if(target is null)
+            if (target is null)
             {
                 throw new ArgumentNullException(nameof(delimeter));
             }
-
 
             return string.Join(delimeter, target.Select(o => $"{o}"));
         }

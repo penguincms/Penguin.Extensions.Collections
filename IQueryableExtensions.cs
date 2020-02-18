@@ -1,7 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Penguin.Extensions.Collections
 {
@@ -28,7 +26,7 @@ namespace Penguin.Extensions.Collections
         /// <returns>A Typed List</returns>
         public static IEnumerable<object> AsIEnumerable(this IQueryable source)
         {
-            foreach(object o in source)
+            foreach (object o in source)
             {
                 yield return o;
             }

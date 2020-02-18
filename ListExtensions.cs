@@ -135,7 +135,6 @@ namespace Penguin.Extensions.Collections
                 {
                     toProcess.AddRange(result);
                 }
-
             }
         }
 
