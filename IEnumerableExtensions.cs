@@ -109,7 +109,10 @@ namespace Penguin.Extensions.Collections
         /// <param name="oldQuery">The IEnumerable target</param>
         /// <param name="filter">The predicate to pass to Where</param>
         /// <returns>The filtered list</returns>
-        public static List<T> ToList<T>(this IEnumerable<T> oldQuery, Func<T, bool> filter) => oldQuery.Where(filter).ToList();
+        public static List<T> ToList<T>(this IEnumerable<T> oldQuery, Func<T, bool> filter)
+        {
+            return oldQuery.Where(filter).ToList();
+        }
 
         /// <summary>
         /// Converts an IEnumerable to a Queue
