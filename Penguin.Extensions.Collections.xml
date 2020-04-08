@@ -161,7 +161,61 @@
             <param name="list">The source list</param>
             <returns>The first item</returns>
         </member>
-        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveBack``1(System.Collections.Generic.List{``0},System.Predicate{``0},System.Boolean)">
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveBack``1(``0[],``0,System.Boolean)">
+            <summary>
+            Moves and item in a list one space towards the front
+            </summary>
+            <typeparam name="T">Any Type</typeparam>
+            <param name="list">The target list</param>
+            <param name="itemSelector">The predicate to use to find the item</param>
+            <param name="isFirstToEnd">A bool representing whether or not the first item should wrap to the end of the list</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveBack``1(``0[],System.Predicate{``0},System.Boolean)">
+            <summary>
+            Moves and item in a list one space towards the front
+            </summary>
+            <typeparam name="T">Any Type</typeparam>
+            <param name="list">The target list</param>
+            <param name="itemSelector">The predicate to use to find the item</param>
+            <param name="isFirstToEnd">A bool representing whether or not the first item should wrap to the end of the list</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveBack``1(``0[],System.Int32,System.Boolean)">
+            <summary>
+            Moves and item in a list one space towards the front
+            </summary>
+            <typeparam name="T">Any Type</typeparam>
+            <param name="list">The target list</param>
+            <param name="index">The index of the item to move</param>
+            <param name="isFirstToEnd">A bool representing whether or not the first item should wrap to the end of the list</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveForward``1(``0[],``0,System.Boolean)">
+            <summary>
+            Moves and item in a list one space towards the end
+            </summary>
+            <typeparam name="T">Any Type</typeparam>
+            <param name="list">The target list</param>
+            <param name="item">The item to move</param>
+            <param name="isLastToBeginning">A bool indicating whether or not the last item should move to the front</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveForward``1(``0[],System.Predicate{``0},System.Boolean)">
+            <summary>
+            Moves and item in a list one space towards the end
+            </summary>
+            <typeparam name="T">Any Type</typeparam>
+            <param name="list">The target list</param>
+            <param name="itemSelector">The predicate to use to find the item</param>
+            <param name="isLastToBeginning">A bool indicating whether or not the last item should move to the front</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveForward``1(``0[],System.Int32,System.Boolean)">
+            <summary>
+            Moves and item in a list one space towards the end
+            </summary>
+            <typeparam name="T">Any Type</typeparam>
+            <param name="list">The target list</param>
+            <param name="index">The index of the item to move</param>
+            <param name="isLastToBeginning">A bool indicating whether or not the last item should move to the front</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveBack``1(System.Collections.Generic.IList{``0},System.Predicate{``0},System.Boolean)">
             <summary>
             Moves and item in a list one space towards the front
             </summary>
@@ -177,6 +231,60 @@
             <typeparam name="T">Any Type</typeparam>
             <param name="list">The target list</param>
             <param name="itemSelector">The predicate to use to find the item</param>
+            <param name="isLastToBeginning">A bool indicating whether or not the last item should move to the front</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveBack(System.Collections.IList,System.Predicate{System.Object},System.Boolean)">
+            <summary>
+            Moves and item in a list one space towards the front
+            </summary>
+            <typeparam name="T">Any Type</typeparam>
+            <param name="list">The target list</param>
+            <param name="itemSelector">The predicate to use to find the item</param>
+            <param name="isFirstToEnd">A bool representing whether or not the first item should wrap to the end of the list</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveBack(System.Collections.IList,System.Object,System.Boolean)">
+            <summary>
+            Moves and item in a list one space towards the front
+            </summary>
+            <typeparam name="T">Any Type</typeparam>
+            <param name="list">The target list</param>
+            <param name="item">The item to move</param>
+            <param name="isFirstToEnd">A bool representing whether or not the first item should wrap to the end of the list</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveBack(System.Collections.IList,System.Int32,System.Boolean)">
+            <summary>
+            Moves and item in a list one space towards the front
+            </summary>
+            <typeparam name="T">Any Type</typeparam>
+            <param name="list">The target list</param>
+            <param name="itemSelector">The predicate to use to find the item</param>
+            <param name="isFirstToEnd">A bool representing whether or not the first item should wrap to the end of the list</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveForward(System.Collections.IList,System.Predicate{System.Object},System.Boolean)">
+            <summary>
+            Moves and item in a list one space towards the end
+            </summary>
+            <typeparam name="T">Any Type</typeparam>
+            <param name="list">The target list</param>
+            <param name="itemSelector">The predicate to use to find the item</param>
+            <param name="isLastToBeginning">A bool indicating whether or not the last item should move to the front</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveForward(System.Collections.IList,System.Object,System.Boolean)">
+            <summary>
+            Moves and item in a list one space towards the end
+            </summary>
+            <typeparam name="T">Any Type</typeparam>
+            <param name="list">The target list</param>
+            <param name="item">The item to move</param>
+            <param name="isLastToBeginning">A bool indicating whether or not the last item should move to the front</param>
+        </member>
+        <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveForward(System.Collections.IList,System.Int32,System.Boolean)">
+            <summary>
+            Moves and item in a list one space towards the end
+            </summary>
+            <typeparam name="T">Any Type</typeparam>
+            <param name="list">The target list</param>
+            <param name="index">The index of the item to move</param>
             <param name="isLastToBeginning">A bool indicating whether or not the last item should move to the front</param>
         </member>
         <member name="M:Penguin.Extensions.Collections.ListExtensions.RecursiveProcess``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Collections.Generic.IEnumerable{``0}})">
