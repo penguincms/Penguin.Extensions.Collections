@@ -26,12 +26,12 @@ namespace Penguin.Extensions.Collections
             list.RemoveAt(0);
             return item;
         }
+
         /// <summary>
         /// Moves and item in a list one space towards the front
         /// </summary>
         /// <typeparam name="T">Any Type</typeparam>
         /// <param name="list">The target list</param>
-        /// <param name="itemSelector">The predicate to use to find the item</param>
         /// <param name="isFirstToEnd">A bool representing whether or not the first item should wrap to the end of the list</param>
         public static void MoveBack<T>(this T[] list, T item, bool isFirstToEnd)
         {
@@ -48,7 +48,6 @@ namespace Penguin.Extensions.Collections
                 }
             }
         }
-
 
         /// <summary>
         /// Moves and item in a list one space towards the front
@@ -71,9 +70,7 @@ namespace Penguin.Extensions.Collections
                 return;
             }
 
-
             list.MoveBack(index, isFirstToEnd);
-
         }
 
         /// <summary>
@@ -128,6 +125,7 @@ namespace Penguin.Extensions.Collections
                 }
             }
         }
+
         /// <summary>
         /// Moves and item in a list one space towards the end
         /// </summary>
@@ -151,6 +149,7 @@ namespace Penguin.Extensions.Collections
 
             list.MoveForward(index, isLastToBeginning);
         }
+
         /// <summary>
         /// Moves and item in a list one space towards the end
         /// </summary>
@@ -184,6 +183,7 @@ namespace Penguin.Extensions.Collections
                 list[index] = temp;
             }
         }
+
         public static int FindIndex(this IEnumerable source, Predicate<object> itemSelector)
         {
             if (source is null)
@@ -242,6 +242,13 @@ namespace Penguin.Extensions.Collections
             return currentIndex;
         }
 
+        /// <summary>
+        /// Returns an IEnumerable of indexes for items matching the provided predicate
+        /// </summary>
+        /// <typeparam name="T">Any Type</typeparam>
+        /// <param name="source">The source IEnumerable</param>
+        /// <param name="itemSelector">The predicate for matching the items in the IEnumerable</param>
+        /// <returns></returns>
         public static IEnumerable<int> FindIndexes<T>(this IEnumerable<T> source, Predicate<T> itemSelector)
         {
             if (source is null)
@@ -257,6 +264,7 @@ namespace Penguin.Extensions.Collections
                 }
             }
         }
+
         /// <summary>
         /// Moves and item in a list one space towards the front
         /// </summary>
@@ -348,7 +356,6 @@ namespace Penguin.Extensions.Collections
         /// <summary>
         /// Moves and item in a list one space towards the front
         /// </summary>
-        /// <typeparam name="T">Any Type</typeparam>
         /// <param name="list">The target list</param>
         /// <param name="itemSelector">The predicate to use to find the item</param>
         /// <param name="isFirstToEnd">A bool representing whether or not the first item should wrap to the end of the list</param>
@@ -368,10 +375,10 @@ namespace Penguin.Extensions.Collections
 
             list.MoveBack(currentIndex, isFirstToEnd);
         }
+
         /// <summary>
         /// Moves and item in a list one space towards the front
         /// </summary>
-        /// <typeparam name="T">Any Type</typeparam>
         /// <param name="list">The target list</param>
         /// <param name="item">The item to move</param>
         /// <param name="isFirstToEnd">A bool representing whether or not the first item should wrap to the end of the list</param>
@@ -398,17 +405,19 @@ namespace Penguin.Extensions.Collections
                 index++;
             }
         }
+
         /// <summary>
         /// Moves and item in a list one space towards the front
         /// </summary>
-        /// <typeparam name="T">Any Type</typeparam>
         /// <param name="list">The target list</param>
-        /// <param name="itemSelector">The predicate to use to find the item</param>
+        /// <param name="index">The index of the item to move</param>
         /// <param name="isFirstToEnd">A bool representing whether or not the first item should wrap to the end of the list</param>
         public static void MoveBack(this IList list, int index, bool isFirstToEnd)
         {
-
-
+            if (list is null)
+            {
+                throw new ArgumentNullException(nameof(list));
+            }
             // Copy the current item
             object item = list[index];
 
@@ -435,7 +444,6 @@ namespace Penguin.Extensions.Collections
         /// <summary>
         /// Moves and item in a list one space towards the end
         /// </summary>
-        /// <typeparam name="T">Any Type</typeparam>
         /// <param name="list">The target list</param>
         /// <param name="itemSelector">The predicate to use to find the item</param>
         /// <param name="isLastToBeginning">A bool indicating whether or not the last item should move to the front</param>
@@ -451,21 +459,29 @@ namespace Penguin.Extensions.Collections
                 throw new ArgumentNullException(nameof(itemSelector));
             }
 
-
             int currentIndex = list.FindIndex(itemSelector);
 
             list.MoveForward(currentIndex, isLastToBeginning);
-
         }
+
         /// <summary>
         /// Moves and item in a list one space towards the end
         /// </summary>
-        /// <typeparam name="T">Any Type</typeparam>
         /// <param name="list">The target list</param>
         /// <param name="item">The item to move</param>
         /// <param name="isLastToBeginning">A bool indicating whether or not the last item should move to the front</param>
         public static void MoveForward(this IList list, object item, bool isLastToBeginning)
         {
+            if (list is null)
+            {
+                throw new ArgumentNullException(nameof(list));
+            }
+
+            if (item is null)
+            {
+                throw new ArgumentNullException(nameof(item));
+            }
+
             int index = 0;
             foreach (object o in list)
             {
@@ -481,15 +497,15 @@ namespace Penguin.Extensions.Collections
         /// <summary>
         /// Moves and item in a list one space towards the end
         /// </summary>
-        /// <typeparam name="T">Any Type</typeparam>
         /// <param name="list">The target list</param>
         /// <param name="index">The index of the item to move</param>
         /// <param name="isLastToBeginning">A bool indicating whether or not the last item should move to the front</param>
         public static void MoveForward(this IList list, int index, bool isLastToBeginning)
         {
-
-
-
+            if (list is null)
+            {
+                throw new ArgumentNullException(nameof(list));
+            }
             // Copy the current item
             object item = list[index];
 

@@ -60,5 +60,25 @@ namespace Penguin.Extensions.Collections
                 return false;
             }
         }
+
+        /// <summary>
+        /// Adds a range of KeyValuePairs to the dictionary
+        /// </summary>
+        /// <typeparam name="TKey">The key type</typeparam>
+        /// <typeparam name="TValue">The value type</typeparam>
+        /// <param name="dict">The target dictionary</param>
+        /// <param name="range">An IEnumerable of the keys to add</param>
+        public static void AddRange<TKey, TValue>(this IDictionary<TKey, TValue> dict, IEnumerable<KeyValuePair<TKey,TValue>> range)
+        {
+            if (dict is null)
+            {
+                throw new System.ArgumentNullException(nameof(dict));
+            }
+
+            foreach (KeyValuePair<TKey,TValue> kvp in range)
+            {
+                dict.Add(kvp);
+            }
+        }
     }
 }
