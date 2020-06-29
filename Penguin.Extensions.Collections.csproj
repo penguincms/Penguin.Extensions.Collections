@@ -3,13 +3,13 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
     <PackageProjectUrl>https://github.com/penguincms/Penguin.Extensions.Collections</PackageProjectUrl>
-    <Version>2.0.3</Version>
+    <Version>5.0.0</Version>
     <Description>A few Collection extension methods. Notibly a method for "Not null and Any", a method for recursively processing tree items, and a few convertion methods between collection types</Description>
     <AssemblyName>Penguin.Extensions.Collections</AssemblyName>
     <RootNamespace>Penguin.Extensions.Collections</RootNamespace>
     <DocumentationFile>Penguin.Extensions.Collections.xml</DocumentationFile>
   </PropertyGroup>
   <ItemGroup>
-    <PackageReference Include="Penguin.Reflection.Extensions" Version="3.0.5-T9XYC7H" />
+    <PackageReference Include="Penguin.Reflection.Extensions" Version="5.0.0" />
   </ItemGroup>
 </Project>
