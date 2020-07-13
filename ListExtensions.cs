@@ -19,8 +19,10 @@ namespace Penguin.Extensions.Collections
         /// <returns>The first item</returns>
         public static T Dequeue<T>(this IList<T> list)
         {
-            Contract.Requires(list != null);
-            Contract.Requires(list.Any());
+            if (list is null)
+            {
+                throw new ArgumentNullException(nameof(list));
+            }
 
             T item = list.ElementAt(0);
             list.RemoveAt(0);
@@ -537,7 +539,10 @@ namespace Penguin.Extensions.Collections
         /// <param name="processingFunc">A function accepting a child and returning the next list of nodes to add to the processing queue</param>
         public static void RecursiveProcess<T>(this IEnumerable<T> queue, Func<T, IEnumerable<T>> processingFunc)
         {
-            Contract.Requires(queue != null);
+            if (queue is null)
+            {
+                throw new ArgumentNullException(nameof(queue));
+            }
 
             List<T> toProcess;
 
@@ -578,8 +583,10 @@ namespace Penguin.Extensions.Collections
         /// <returns>An IEnumerable used to access the collection of new child lists</returns>
         public static IEnumerable<List<T>> Split<T>(this IEnumerable<T> input, int size)
         {
-            Contract.Requires(input != null);
-            Contract.Requires(size > 0);
+            if (input is null)
+            {
+                throw new ArgumentNullException(nameof(input));
+            }
 
             List<T> toReturn = new List<T>(size);
 
@@ -610,8 +617,10 @@ namespace Penguin.Extensions.Collections
         /// <returns>Any random item from the list</returns>
         public static T Random<T>(this ICollection<T> source)
         {
-            Contract.Requires(source != null);
-            Contract.Requires(source.Any());
+            if (source is null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
 
             return source.ElementAt(InternalRandom.Next(0, source.Count));
         }

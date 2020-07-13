@@ -26,6 +26,11 @@ namespace Penguin.Extensions.Collections
         /// <returns>A Typed List</returns>
         public static IEnumerable<object> AsIEnumerable(this IQueryable source)
         {
+            if (source is null)
+            {
+                throw new System.ArgumentNullException(nameof(source));
+            }
+
             foreach (object o in source)
             {
                 yield return o;

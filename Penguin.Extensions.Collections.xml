@@ -13,7 +13,7 @@
             <param name="dict">The source dictionary</param>
             <param name="key">The key to search for</param>
             <param name="value">The value to set the key to, or the new value to add</param>
-            <returns>Whether or not the operation was successfull</returns>
+            <returns>Whether or not the operation was successful</returns>
         </member>
         <member name="M:Penguin.Extensions.Collections.DictionaryExtensions.ToFormattedString``2(System.Collections.Generic.Dictionary{``0,``1},System.Char,System.Char)">
             <summary>

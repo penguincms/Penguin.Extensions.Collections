@@ -20,7 +20,10 @@ namespace Penguin.Extensions.Collections
         /// <returns>A string representing the contents of the dictionary</returns>
         public static string ToFormattedString<TKey, TValue>(this Dictionary<TKey, TValue> dict, char seperator = '=', char terminator = ';')
         {
-            Contract.Requires(dict != null);
+            if (dict is null)
+            {
+                throw new System.ArgumentNullException(nameof(dict));
+            }
 
             StringBuilder sb = new StringBuilder();
 
@@ -46,8 +49,10 @@ namespace Penguin.Extensions.Collections
         /// <returns>true if the value was added, false if it was updated</returns>
         public static bool AddOrUpdate<TKey, TValue>(this IDictionary<TKey, TValue> dict, TKey key, TValue value)
         {
-            Contract.Requires(dict != null);
-            Contract.Requires(key != null);
+            if (dict is null)
+            {
+                throw new System.ArgumentNullException(nameof(dict));
+            }
 
             if (!dict.ContainsKey(key))
             {
@@ -68,14 +73,19 @@ namespace Penguin.Extensions.Collections
         /// <typeparam name="TValue">The value type</typeparam>
         /// <param name="dict">The target dictionary</param>
         /// <param name="range">An IEnumerable of the keys to add</param>
-        public static void AddRange<TKey, TValue>(this IDictionary<TKey, TValue> dict, IEnumerable<KeyValuePair<TKey,TValue>> range)
+        public static void AddRange<TKey, TValue>(this IDictionary<TKey, TValue> dict, IEnumerable<KeyValuePair<TKey, TValue>> range)
         {
             if (dict is null)
             {
                 throw new System.ArgumentNullException(nameof(dict));
             }
 
-            foreach (KeyValuePair<TKey,TValue> kvp in range)
+            if (range is null)
+            {
+                throw new System.ArgumentNullException(nameof(range));
+            }
+
+            foreach (KeyValuePair<TKey, TValue> kvp in range)
             {
                 dict.Add(kvp);
             }

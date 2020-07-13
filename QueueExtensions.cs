@@ -16,8 +16,15 @@ namespace Penguin.Extensions.Collections
         /// <param name="toAdd">The items to add</param>
         public static void Enqueue<T>(this Queue<T> queue, IEnumerable<T> toAdd)
         {
-            Contract.Requires(queue != null);
-            Contract.Requires(toAdd != null);
+            if (queue is null)
+            {
+                throw new System.ArgumentNullException(nameof(queue));
+            }
+
+            if (toAdd is null)
+            {
+                throw new System.ArgumentNullException(nameof(toAdd));
+            }
 
             foreach (T item in toAdd)
             {

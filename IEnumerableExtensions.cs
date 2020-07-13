@@ -17,7 +17,7 @@ namespace Penguin.Extensions.Collections
         /// </summary>
         /// <typeparam name="T">Any type</typeparam>
         /// <param name="target">The IEnumerable to check</param>
-        /// <returns>True if the IEnumerable is not null and contains any obejcts</returns>
+        /// <returns>True if the IEnumerable is not null and contains any objects</returns>
         public static bool AnyNotNull<T>(this IEnumerable<T> target)
         {
             return target != null && target.Any();
@@ -29,7 +29,7 @@ namespace Penguin.Extensions.Collections
         /// <typeparam name="T">Any type</typeparam>
         /// <param name="target">The IEnumerable to join</param>
         /// <param name="delimeter">The string delimeter to join with</param>
-        /// <returns>True if the IEnumerable is not null and contains any obejcts</returns>
+        /// <returns>True if the IEnumerable is not null and contains any objects</returns>
         public static string Join<T>(this IEnumerable<T> target, string delimeter = ", ")
         {
             if (target is null)
@@ -46,7 +46,7 @@ namespace Penguin.Extensions.Collections
         /// <typeparam name="T">Any type</typeparam>
         /// <param name="target">The IEnumerable to check</param>
         /// <param name="predicate">The predicate to check for</param>
-        /// <returns>True if the IEnumerable is not null and contains any obejcts matching the predicate</returns>
+        /// <returns>True if the IEnumerable is not null and contains any objects matching the predicate</returns>
         public static bool AnyNotNull<T>(this IEnumerable<T> target, Func<T, bool> predicate)
         {
             return target != null && target.Any(predicate);
@@ -60,8 +60,15 @@ namespace Penguin.Extensions.Collections
         /// <param name="toRun">The Action to run</param>
         public static void ForEach<T>(this IEnumerable<T> oldQuery, Action<T> toRun)
         {
-            Contract.Requires(oldQuery != null);
-            Contract.Requires(toRun != null);
+            if (oldQuery is null)
+            {
+                throw new ArgumentNullException(nameof(oldQuery));
+            }
+
+            if (toRun is null)
+            {
+                throw new ArgumentNullException(nameof(toRun));
+            }
 
             foreach (T item in oldQuery)
             {
@@ -122,7 +129,10 @@ namespace Penguin.Extensions.Collections
         /// <returns>A Queue in the order of the list</returns>
         public static Queue<T> ToQueue<T>(this IEnumerable<T> list)
         {
-            Contract.Requires(list != null);
+            if (list is null)
+            {
+                throw new ArgumentNullException(nameof(list));
+            }
 
             Queue<T> queue = new Queue<T>();
 
@@ -183,7 +193,10 @@ namespace Penguin.Extensions.Collections
         /// <returns>An IEnumerable from the source list containing everything but the specified type</returns>
         public static IEnumerable NotOfType<T>(this IEnumerable source) where T : class
         {
-            Contract.Requires(source != null);
+            if (source is null)
+            {
+                throw new ArgumentNullException(nameof(source));
+            }
 
             foreach (object o in source)
             {
@@ -203,8 +216,6 @@ namespace Penguin.Extensions.Collections
         /// <returns>An IEnumerable from the source list containing everything but the specified type</returns>
         public static IEnumerable<TSource> NotOfType<TExclude, TSource>(this IEnumerable<TSource> source) where TExclude : TSource
         {
-            Contract.Requires(source != null);
-
             return source.Where(p => !(p is TExclude));
         }
 
