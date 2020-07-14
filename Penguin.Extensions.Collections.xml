@@ -52,7 +52,7 @@
             </summary>
             <typeparam name="T">Any type</typeparam>
             <param name="target">The IEnumerable to check</param>
-            <returns>True if the IEnumerable is not null and contains any obejcts</returns>
+            <returns>True if the IEnumerable is not null and contains any objects</returns>
         </member>
         <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.Join``1(System.Collections.Generic.IEnumerable{``0},System.String)">
             <summary>
@@ -61,7 +61,7 @@
             <typeparam name="T">Any type</typeparam>
             <param name="target">The IEnumerable to join</param>
             <param name="delimeter">The string delimeter to join with</param>
-            <returns>True if the IEnumerable is not null and contains any obejcts</returns>
+            <returns>True if the IEnumerable is not null and contains any objects</returns>
         </member>
         <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.AnyNotNull``1(System.Collections.Generic.IEnumerable{``0},System.Func{``0,System.Boolean})">
             <summary>
@@ -70,7 +70,7 @@
             <typeparam name="T">Any type</typeparam>
             <param name="target">The IEnumerable to check</param>
             <param name="predicate">The predicate to check for</param>
-            <returns>True if the IEnumerable is not null and contains any obejcts matching the predicate</returns>
+            <returns>True if the IEnumerable is not null and contains any objects matching the predicate</returns>
         </member>
         <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
             <summary>
