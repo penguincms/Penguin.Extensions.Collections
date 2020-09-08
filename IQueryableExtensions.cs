@@ -14,10 +14,7 @@ namespace Penguin.Extensions.Collections
         /// <typeparam name="T">The type filter to apply</typeparam>
         /// <param name="source">The source IQueryable</param>
         /// <returns>A Typed List</returns>
-        public static IList<T> ToTypedList<T>(this IQueryable source)
-        {
-            return Enumerable.ToList(source.OfType<T>());
-        }
+        public static IList<T> ToTypedList<T>(this IQueryable source) => Enumerable.ToList(source.OfType<T>());
 
         /// <summary>
         /// Converts an IQueryable to a typed list

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Diagnostics.Contracts;
 using System.Linq;
 
 namespace Penguin.Extensions.Collections
@@ -193,6 +192,11 @@ namespace Penguin.Extensions.Collections
                 throw new ArgumentNullException(nameof(source));
             }
 
+            if (itemSelector is null)
+            {
+                throw new ArgumentNullException(nameof(itemSelector));
+            }
+
             int currentIndex = -1;
             int c = 0;
             foreach (object t in source)
@@ -213,6 +217,12 @@ namespace Penguin.Extensions.Collections
             {
                 throw new ArgumentNullException(nameof(source));
             }
+
+            if (itemSelector is null)
+            {
+                throw new ArgumentNullException(nameof(itemSelector));
+            }
+
             int c = 0;
             foreach (object t in source)
             {
@@ -228,6 +238,11 @@ namespace Penguin.Extensions.Collections
             if (source is null)
             {
                 throw new ArgumentNullException(nameof(source));
+            }
+
+            if (itemSelector is null)
+            {
+                throw new ArgumentNullException(nameof(itemSelector));
             }
 
             int currentIndex = -1;
@@ -257,6 +272,12 @@ namespace Penguin.Extensions.Collections
             {
                 throw new ArgumentNullException(nameof(source));
             }
+
+            if (itemSelector is null)
+            {
+                throw new ArgumentNullException(nameof(itemSelector));
+            }
+
             int c = 0;
             foreach (T t in source)
             {
@@ -542,6 +563,11 @@ namespace Penguin.Extensions.Collections
             if (queue is null)
             {
                 throw new ArgumentNullException(nameof(queue));
+            }
+
+            if (processingFunc is null)
+            {
+                throw new ArgumentNullException(nameof(processingFunc));
             }
 
             List<T> toProcess;
