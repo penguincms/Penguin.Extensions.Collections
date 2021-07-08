@@ -2,7 +2,7 @@
   <Import Project="Penguin.Projects.Shared\Penguin.Projects.Shared.csproj" />
   <PropertyGroup>
     <TargetFrameworks>netstandard2.0</TargetFrameworks>
-    <PackageProjectUrl>https://github.com/penguincms/Penguin.Extensions.Collections</PackageProjectUrl>
+    <PackageProjectUrl>https://github.com/PenguinCMS/Penguin.Extensions.Collections</PackageProjectUrl>
     <Version>5.0.5</Version>
     <Description>A few Collection extension methods. Notibly a method for "Not null and Any", a method for recursively processing tree items, and a few convertion methods between collection types</Description>
     <AssemblyName>Penguin.Extensions.Collections</AssemblyName>
