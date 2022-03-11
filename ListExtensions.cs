@@ -600,38 +600,7 @@ namespace Penguin.Extensions.Collections
             }
         }
 
-        /// <summary>
-        /// Splits a list into evenly sized chunks
-        /// </summary>
-        /// <typeparam name="T">Any type</typeparam>
-        /// <param name="input">The source list</param>
-        /// <param name="size">The size of the chunked lists</param>
-        /// <returns>An IEnumerable used to access the collection of new child lists</returns>
-        public static IEnumerable<List<T>> Split<T>(this IEnumerable<T> input, int size)
-        {
-            if (input is null)
-            {
-                throw new ArgumentNullException(nameof(input));
-            }
 
-            List<T> toReturn = new List<T>(size);
-
-            foreach (T item in input)
-            {
-                toReturn.Add(item);
-
-                if (toReturn.Count == size)
-                {
-                    yield return toReturn;
-                    toReturn.Clear();
-                }
-            }
-
-            if (toReturn.Any())
-            {
-                yield return toReturn;
-            }
-        }
 
         private static System.Random InternalRandom { get; set; } = new Random();
 

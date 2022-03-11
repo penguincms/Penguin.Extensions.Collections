@@ -72,6 +72,15 @@
             <param name="predicate">The predicate to check for</param>
             <returns>True if the IEnumerable is not null and contains any objects matching the predicate</returns>
         </member>
+        <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.Chunk``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+            <summary>
+            Splits a list into evenly sized chunks
+            </summary>
+            <typeparam name="T">Any type</typeparam>
+            <param name="input">The source list</param>
+            <param name="size">The size of the chunked lists</param>
+            <returns>An IEnumerable used to access the collection of new child lists</returns>
+        </member>
         <member name="M:Penguin.Extensions.Collections.IEnumerableExtensions.ForEach``1(System.Collections.Generic.IEnumerable{``0},System.Action{``0})">
             <summary>
             Runs an action once for every object in the IEnumerable
@@ -305,15 +314,6 @@
             <typeparam name="T">Any type</typeparam>
             <param name="queue">The top most list on the tree</param>
             <param name="processingFunc">A function accepting a child and returning the next list of nodes to add to the processing queue</param>
-        </member>
-        <member name="M:Penguin.Extensions.Collections.ListExtensions.Split``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
-            <summary>
-            Splits a list into evenly sized chunks
-            </summary>
-            <typeparam name="T">Any type</typeparam>
-            <param name="input">The source list</param>
-            <param name="size">The size of the chunked lists</param>
-            <returns>An IEnumerable used to access the collection of new child lists</returns>
         </member>
         <member name="M:Penguin.Extensions.Collections.ListExtensions.Random``1(System.Collections.Generic.ICollection{``0})">
             <summary>
