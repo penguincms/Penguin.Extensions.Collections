@@ -192,7 +192,7 @@ namespace Penguin.Extensions.Collections
 
             foreach (object o in source)
             {
-                toReturn.Add(o);
+                _ = toReturn.Add(o);
             }
 
             return toReturn;

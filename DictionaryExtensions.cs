@@ -28,10 +28,10 @@ namespace Penguin.Extensions.Collections
 
             foreach (KeyValuePair<TKey, TValue> kvp in dict)
             {
-                sb.Append(kvp.Key);
-                sb.Append(seperator);
-                sb.Append(kvp.Value);
-                sb.Append(terminator);
+                _ = sb.Append(kvp.Key);
+                _ = sb.Append(seperator);
+                _ = sb.Append(kvp.Value);
+                _ = sb.Append(terminator);
             }
 
             return sb.ToString();

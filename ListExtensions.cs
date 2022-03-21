@@ -452,7 +452,7 @@ namespace Penguin.Extensions.Collections
                 list.RemoveAt(index);
 
                 // add the item to the end
-                list.Add(item);
+                _ = list.Add(item);
             }
             else if (!isFirst)
             {
@@ -599,8 +599,6 @@ namespace Penguin.Extensions.Collections
                 }
             }
         }
-
-
 
         private static System.Random InternalRandom { get; set; } = new Random();
 
