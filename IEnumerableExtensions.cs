@@ -1,4 +1,4 @@
-﻿using Penguin.Reflection.Extensions;
+using Penguin.Reflection.Extensions;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -19,7 +19,6 @@ namespace Penguin.Extensions.Collections
         /// <returns>True if the IEnumerable is not null and contains any objects</returns>
         public static bool AnyNotNull<T>(this IEnumerable<T> target) => target != null && target.Any();
         
-
         /// <summary>
         /// Converts a list of objects to a list of strings and then calls Join with the specified delimeter
         /// </summary>
@@ -145,7 +144,6 @@ namespace Penguin.Extensions.Collections
         /// <returns>The filtered list</returns>
         public static List<T> ToList<T>(this IEnumerable<T> oldQuery, Func<T, bool> filter) => oldQuery.Where(filter).ToList();
         
-
         /// <summary>
         /// Converts an IEnumerable to a Queue
         /// </summary>
@@ -207,7 +205,6 @@ namespace Penguin.Extensions.Collections
         /// <returns>An IEnumerable from the source list containing only the specified type</returns>
         public static IEnumerable<T> OfType<T>(this IEnumerable<T> source, Type t) =>  source.Where(p => p.GetType() == t);
         
-
         /// <summary>
         /// Returns an IEnumerable from the source list containing everything but the specified type
         /// </summary>
@@ -239,7 +236,6 @@ namespace Penguin.Extensions.Collections
         /// <returns>An IEnumerable from the source list containing everything but the specified type</returns>
         public static IEnumerable<TSource> NotOfType<TExclude, TSource>(this IEnumerable<TSource> source) where TExclude : TSource => source.Where(p => !(p is TExclude));
         
-
         /// <summary>
         /// Returns an IEnumerable from the source list containing everything but the specified type
         /// </summary>
