@@ -17,7 +17,10 @@ namespace Penguin.Extensions.Collections
         /// <typeparam name="T">Any type</typeparam>
         /// <param name="target">The IEnumerable to check</param>
         /// <returns>True if the IEnumerable is not null and contains any objects</returns>
-        public static bool AnyNotNull<T>(this IEnumerable<T> target) => target != null && target.Any();
+        public static bool AnyNotNull<T>(this IEnumerable<T> target)
+        {
+            return target != null && target.Any();
+        }
 
         /// <summary>
         /// Converts a list of objects to a list of strings and then calls Join with the specified delimeter
@@ -43,7 +46,10 @@ namespace Penguin.Extensions.Collections
         /// <param name="target">The IEnumerable to check</param>
         /// <param name="predicate">The predicate to check for</param>
         /// <returns>True if the IEnumerable is not null and contains any objects matching the predicate</returns>
-        public static bool AnyNotNull<T>(this IEnumerable<T> target, Func<T, bool> predicate) => target != null && target.Any(predicate);
+        public static bool AnyNotNull<T>(this IEnumerable<T> target, Func<T, bool> predicate)
+        {
+            return target != null && target.Any(predicate);
+        }
 
         /// <summary>
         /// Splits a list into evenly sized chunks
@@ -142,7 +148,10 @@ namespace Penguin.Extensions.Collections
         /// <param name="oldQuery">The IEnumerable target</param>
         /// <param name="filter">The predicate to pass to Where</param>
         /// <returns>The filtered list</returns>
-        public static List<T> ToList<T>(this IEnumerable<T> oldQuery, Func<T, bool> filter) => oldQuery.Where(filter).ToList();
+        public static List<T> ToList<T>(this IEnumerable<T> oldQuery, Func<T, bool> filter)
+        {
+            return oldQuery.Where(filter).ToList();
+        }
 
         /// <summary>
         /// Converts an IEnumerable to a Queue
@@ -203,7 +212,10 @@ namespace Penguin.Extensions.Collections
         /// <param name="source">The source list</param>
         /// <param name="t">The type of objects to return from the source</param>
         /// <returns>An IEnumerable from the source list containing only the specified type</returns>
-        public static IEnumerable<T> OfType<T>(this IEnumerable<T> source, Type t) => source.Where(p => p.GetType() == t);
+        public static IEnumerable<T> OfType<T>(this IEnumerable<T> source, Type t)
+        {
+            return source.Where(p => p.GetType() == t);
+        }
 
         /// <summary>
         /// Returns an IEnumerable from the source list containing everything but the specified type
@@ -234,7 +246,10 @@ namespace Penguin.Extensions.Collections
         /// <typeparam name="TSource">The source list Type</typeparam>
         /// <param name="source">The source list</param>
         /// <returns>An IEnumerable from the source list containing everything but the specified type</returns>
-        public static IEnumerable<TSource> NotOfType<TExclude, TSource>(this IEnumerable<TSource> source) where TExclude : TSource => source.Where(p => !(p is TExclude));
+        public static IEnumerable<TSource> NotOfType<TExclude, TSource>(this IEnumerable<TSource> source) where TExclude : TSource
+        {
+            return source.Where(p => !(p is TExclude));
+        }
 
         /// <summary>
         /// Returns an IEnumerable from the source list containing everything but the specified type
@@ -243,7 +258,9 @@ namespace Penguin.Extensions.Collections
         /// <param name="source">The source list</param>
         /// <param name="t">The type of objects to return from the source</param>
         /// <returns>An IEnumerable from the source list containing everything but the specified type</returns>
-        public static IEnumerable<T> NotOfType<T>(this IEnumerable<T> source, Type t) => source.Where(p => p.GetType() != t);
-
+        public static IEnumerable<T> NotOfType<T>(this IEnumerable<T> source, Type t)
+        {
+            return source.Where(p => p.GetType() != t);
+        }
     }
 }

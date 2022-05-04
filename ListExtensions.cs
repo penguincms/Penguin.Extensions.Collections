@@ -92,15 +92,11 @@ namespace Penguin.Extensions.Collections
 
             if (isFirstToEnd && isFirst)
             {
-                T temp = list[list.Length - 1];
-                list[list.Length - 1] = list[index];
-                list[index] = temp;
+                (list[index], list[list.Length - 1]) = (list[list.Length - 1], list[index]);
             }
             else if (!isFirst)
             {
-                T temp = list[index - 1];
-                list[index - 1] = list[index];
-                list[index] = temp;
+                (list[index], list[index - 1]) = (list[index - 1], list[index]);
             }
         }
 
@@ -169,19 +165,11 @@ namespace Penguin.Extensions.Collections
 
             if (isLastToBeginning && isLast)
             {
-                T temp = list[0];
-
-                list[0] = list[index];
-
-                list[index] = temp;
+                (list[index], list[0]) = (list[0], list[index]);
             }
             else if (!isLast)
             {
-                T temp = list[index + 1];
-
-                list[index + 1] = list[index];
-
-                list[index] = temp;
+                (list[index], list[index + 1]) = (list[index + 1], list[index]);
             }
         }
 
