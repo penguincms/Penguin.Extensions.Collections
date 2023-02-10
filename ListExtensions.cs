@@ -33,6 +33,7 @@ namespace Penguin.Extensions.Collections
         /// </summary>
         /// <typeparam name="T">Any Type</typeparam>
         /// <param name="list">The target list</param>
+        /// <param name="item"></param>
         /// <param name="isFirstToEnd">A bool representing whether or not the first item should wrap to the end of the list</param>
         public static void MoveBack<T>(this T[] list, T item, bool isFirstToEnd)
         {
@@ -92,7 +93,7 @@ namespace Penguin.Extensions.Collections
 
             if (isFirstToEnd && isFirst)
             {
-                (list[index], list[list.Length - 1]) = (list[list.Length - 1], list[index]);
+                (list[index], list[^1]) = (list[^1], list[index]);
             }
             else if (!isFirst)
             {
@@ -558,17 +559,7 @@ namespace Penguin.Extensions.Collections
                 throw new ArgumentNullException(nameof(processingFunc));
             }
 
-            List<T> toProcess;
-
-            if (queue is ICollection<T> collection)
-            {
-                toProcess = new List<T>(collection.Count);
-            }
-            else
-            {
-                toProcess = new List<T>();
-            }
-
+            List<T> toProcess = queue is ICollection<T> collection ? new List<T>(collection.Count) : new List<T>();
             foreach (T item in queue)
             {
                 toProcess.Add(item);
@@ -599,12 +590,7 @@ namespace Penguin.Extensions.Collections
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "CA5394:Do not use insecure randomness", Justification = "<Pending>")]
         public static T Random<T>(this ICollection<T> source)
         {
-            if (source is null)
-            {
-                throw new ArgumentNullException(nameof(source));
-            }
-
-            return source.ElementAt(InternalRandom.Next(0, source.Count));
+            return source is null ? throw new ArgumentNullException(nameof(source)) : source.ElementAt(InternalRandom.Next(0, source.Count));
         }
     }
 }

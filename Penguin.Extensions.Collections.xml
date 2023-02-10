@@ -185,6 +185,7 @@
             </summary>
             <typeparam name="T">Any Type</typeparam>
             <param name="list">The target list</param>
+            <param name="item"></param>
             <param name="isFirstToEnd">A bool representing whether or not the first item should wrap to the end of the list</param>
         </member>
         <member name="M:Penguin.Extensions.Collections.ListExtensions.MoveBack``1(``0[],System.Predicate{``0},System.Boolean)">

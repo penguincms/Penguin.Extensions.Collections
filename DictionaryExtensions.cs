@@ -24,7 +24,7 @@ namespace Penguin.Extensions.Collections
                 throw new System.ArgumentNullException(nameof(dict));
             }
 
-            StringBuilder sb = new StringBuilder();
+            StringBuilder sb = new();
 
             foreach (KeyValuePair<TKey, TValue> kvp in dict)
             {
