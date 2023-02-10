@@ -596,6 +596,7 @@ namespace Penguin.Extensions.Collections
         /// <typeparam name="T">Any item type</typeparam>
         /// <param name="source">The source collection to pick from</param>
         /// <returns>Any random item from the list</returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Security", "CA5394:Do not use insecure randomness", Justification = "<Pending>")]
         public static T Random<T>(this ICollection<T> source)
         {
             if (source is null)

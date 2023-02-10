@@ -31,12 +31,7 @@ namespace Penguin.Extensions.Collections
         /// <returns>True if the IEnumerable is not null and contains any objects</returns>
         public static string Join<T>(this IEnumerable<T> target, string delimeter = ", ")
         {
-            if (target is null)
-            {
-                throw new ArgumentNullException(nameof(delimeter));
-            }
-
-            return string.Join(delimeter, target.Select(o => $"{o}"));
+            return target is null ? throw new ArgumentNullException(nameof(delimeter)) : string.Join(delimeter, target.Select(o => $"{o}"));
         }
 
         /// <summary>
@@ -65,7 +60,7 @@ namespace Penguin.Extensions.Collections
                 throw new ArgumentNullException(nameof(input));
             }
 
-            List<T> toReturn = new List<T>(size);
+            List<T> toReturn = new(size);
 
             foreach (T item in input)
             {
@@ -148,6 +143,7 @@ namespace Penguin.Extensions.Collections
         /// <param name="oldQuery">The IEnumerable target</param>
         /// <param name="filter">The predicate to pass to Where</param>
         /// <returns>The filtered list</returns>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Design", "CA1002:Do not expose generic lists", Justification = "<Pending>")]
         public static List<T> ToList<T>(this IEnumerable<T> oldQuery, Func<T, bool> filter)
         {
             return oldQuery.Where(filter).ToList();
@@ -166,7 +162,7 @@ namespace Penguin.Extensions.Collections
                 throw new ArgumentNullException(nameof(list));
             }
 
-            Queue<T> queue = new Queue<T>();
+            Queue<T> queue = new();
 
             foreach (T item in list)
             {
@@ -190,10 +186,7 @@ namespace Penguin.Extensions.Collections
 
             Type collectionType = source.GetType().GetCollectionType();
 
-            if (collectionType is null)
-            {
-                collectionType = typeof(object);
-            }
+            collectionType ??= typeof(object);
 
             IList toReturn = Activator.CreateInstance(typeof(List<>).MakeGenericType(collectionType)) as IList;
 
@@ -232,7 +225,7 @@ namespace Penguin.Extensions.Collections
 
             foreach (object o in source)
             {
-                if (!(o is T))
+                if (o is not T)
                 {
                     yield return o;
                 }
@@ -248,7 +241,7 @@ namespace Penguin.Extensions.Collections
         /// <returns>An IEnumerable from the source list containing everything but the specified type</returns>
         public static IEnumerable<TSource> NotOfType<TExclude, TSource>(this IEnumerable<TSource> source) where TExclude : TSource
         {
-            return source.Where(p => !(p is TExclude));
+            return source.Where(p => p is not TExclude);
         }
 
         /// <summary>
